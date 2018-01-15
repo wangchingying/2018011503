@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //SharedPreferences 將資料存入手機, Key -> Value, 此case的Key就是data1, 有點像Hashmap
     //用Tools下的Android Device Monitor 找 File explore, 裡面的Data內的Data, 再找專案名稱, 裡面有Shared_Pref, 裡面的mydata.xml
+    //右上角選磁碟片icon, 可 pull a file on the device, 存到電腦裡
     public void clickWrite(View v)
     {
         SharedPreferences sp = getSharedPreferences("mydata", MODE_PRIVATE);
