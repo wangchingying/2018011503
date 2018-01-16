@@ -1,11 +1,15 @@
 package com.cyw.a2018011503;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +36,24 @@ public class MainActivity extends AppCompatActivity {
         String str = sp.getString("data1", "");
         TextView tv = (TextView) findViewById(R.id.textView);
         tv.setText(str);
+
+    }
+    public void clickSetting(View v)
+    {
+        Intent it = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(it);
     }
 
+    public void clickReadS(View v)
+    {
+        //以下兩種寫法皆可, 第二種寫法系統會自動取得default的xml檔, 第一種是自己從Android Device Monitor
+        //SharedPreferences sp = getSharedPreferences("com.cyw.a2018011503_preferences", MODE_PRIVATE);
+        SharedPreferences sp=getDefaultSharedPreferences(this);
+        String str = sp.getString("example_text", "");//去res下的xml找UI裡的key或去檔案中找
+        TextView tv1 = (TextView) findViewById(R.id.textView2);
+        Toast.makeText(MainActivity.this,str,Toast.LENGTH_SHORT).show();
+        tv1.setText(str);
+
+
+    }
 }
